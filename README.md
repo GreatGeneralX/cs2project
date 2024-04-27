@@ -8,15 +8,13 @@ Finance Composite Viewer is a web application that uses the Composite Design Pat
 - Composite Design Pattern for scalability and maintainability.
 - User-friendly web interface.
 
-## Installatin Method 
-finance-composite-viewer/
-│
-├── flask/
-│ ├── templates/
-│ │ ├── index.html
-│ │ └── return.html
-│ │
-│ └── main.py
-  
+## File Structures
+
+flask/templates/index.html
+flask/templates/return.html
+flask/main.py
+
+## Installation Method   
+
 pip install -r requirements.txt
 To execute, do main.py in the terminal
