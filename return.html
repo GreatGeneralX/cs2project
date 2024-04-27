@@ -1,0 +1,54 @@
+<!-- return.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Price Information Results</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    
+{% for symbol, stock_data in portfolio_data.items() %}
+<h2>{{ symbol }}</h2>
+<table>
+    <tr>
+        <th>date</th>
+        <th>Open</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Close</th>
+        <th>Volume</th>
+    </tr>
+    {% for date, open, high, low, close, volume in 
+        zip(stock_data['Data']['Date'], stock_data['Data']['Open'], stock_data['Data']['High'], 
+            stock_data['Data']['Low'], stock_data['Data']['Close'], stock_data['Data']['Volume']) %}
+    <tr>
+        <td>{{ date }}</td>
+        <td>{{ open }}</td>
+        <td>{{ high }}</td>
+        <td>{{ low }}</td>
+        <td>{{ close }}</td>
+        <td>{{ volume }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endfor %}
+
+
+</body>
+</html>
