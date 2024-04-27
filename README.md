@@ -10,10 +10,10 @@ Finance Composite Viewer is a web application that uses the Composite Design Pat
 
 ## File Structures
 
-- flask/
+- flask
   - templates
     - index.html 
-    -return.html
+    - return.html
   - main.py
 
 ## Installation Method   
