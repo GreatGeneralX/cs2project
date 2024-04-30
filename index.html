@@ -4,7 +4,8 @@
 <head>
     <style>
         body {
-            font-family: Arial, sans-serif;
+        font-family: Arial, sans-serif;
+        background-color: #fafdff; 
         }
         form {
             margin: 20px;
@@ -17,7 +18,34 @@
             margin-top: 10px;
         }
     </style>
-</head>
+  </head>
+  <!-- index.htmlに追加する部分 -->
+<form id="portfolioForm" method="POST">
+  <label>ポートフォリオ管理：</label>
+  <div>
+      <input type="checkbox" id="msft" name="stocks" value="MSFT">
+      <label for="msft">Microsoft Corporation (MSFT)</label>
+  </div>
+  <div>
+      <input type="checkbox" id="aapl" name="stocks" value="AAPL">
+      <label for="aapl">Apple (AAPL)</label>
+  </div>
+  <div>
+    <input type="checkbox" id="nvda" name="stocks" value="NVDA">
+    <label for="nvda">ANVIDIA Corporation (NVDA)</label>
+</div>
+<div>
+  <input type="checkbox" id="amzn" name="stocks" value="AMZN">
+  <label for="amzn">Amazon (AMZN)</label>
+</div>
+<div>
+  <input type="checkbox" id="google" name="stocks" value="GOOGL">
+  <label for="google">Google GOOGL)</label>
+</div>
+  <!-- 他の企業についても同様に追加 -->
+  <button type="submit">更新する</button>
+</form>
+
 <body>
     <h1>Stock Data Input</h1>
     {% if error %}

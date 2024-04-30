@@ -1,10 +1,13 @@
-<!-- return.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Stock Price Information Results</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafdff; 
+            }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -19,10 +22,18 @@
         th {
             background-color: #f2f2f2;
         }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #4CAF50;  /* 緑色の背景 */
+            color: white;              /* 文字は白色 */
+            text-decoration: none;     /* 下線を消す */
+            border-radius: 5px;        /* 角を少し丸くする */
+        }
     </style>
 </head>
 <body>
-    
 {% for symbol, stock_data in portfolio_data.items() %}
 <h2>{{ symbol }}</h2>
 <table>
@@ -49,6 +60,9 @@
 </table>
 {% endfor %}
 
+<!-- add button -->
+<a href="{{ url_for('home') }}" class="back-button">Back to the first page</a>
 
 </body>
 </html>
+
