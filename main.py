@@ -101,6 +101,19 @@ def index():
             return render_template('index.html', error=str(e))
     else:
         return render_template('index.html')
+    
+# main.pyに追加する部分
+@app.route('/update_portfolio', methods=['POST'])
+def update_portfolio():
+    selected_stocks = request.form.getlist('stocks')
+    update_portfolio_data(selected_stocks)  # ポートフォリオを更新するための関数
+    return redirect('/somepage')
+    
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+
 
 # This line should come after the function definition
 if __name__ == '__main__':
