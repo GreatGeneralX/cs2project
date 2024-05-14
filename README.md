@@ -30,34 +30,5 @@ Finance Composite Viewer is a web application that uses the Composite Design Pat
 pip install -r requirements.txt
 To execute, do main.py in the terminal
 
-Smart Portfolio Manager
-├── main.py
-│   ├── Flask App
-│   ├── Routes
-│   │   ├── '/' (GET, POST)
-│   │   ├── '/graph' (GET, POST)
-│   │   ├── '/update_portfolio' (POST)
-│   ├── Classes
-│   │   ├── StockComponent (abstract)
-│   │   ├── SingleStock : StockComponent
-│   │   │   └── Methods: get_data()
-│   │   ├── StockComposite : StockComponent
-│   │   │   └── Methods: get_data(), add()
-│   │   ├── StockDataLeaf (not fully defined in provided info)
-│   │   │   └── Methods: get_data()
-│   │   └── Functions
-│   │       ├── validate_date(date_text)
-│   ├── Data Handling
-│   │   └── yfinance usage for data fetching
-│   └── Logging and Error Handling
-├── templates
-│   ├── graph_form.html
-│   │   └── Form for stock data input for graph
-│   ├── graph.html
-│   │   └── Display generated graph
-│   ├── index.html
-│   │   └── Initial stock data input form
-│   └── return.html
-│       └── Display of stock data results
-
-
+## UML Diagram
+<img width="484" alt="スクリーンショット 2024-05-13 午後10 31 59" src="https://github.com/GreatGeneralX/cs2project/assets/119135083/c7ba7812-ca53-4898-89d7-f9bf3a10d6c8">
