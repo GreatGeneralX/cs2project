@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <meta charset="UTF-8">
     <title>Stock Price Information Results</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #fafdff; 
-            }
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -35,34 +36,36 @@
 </head>
 <body>
 {% for symbol, stock_data in portfolio_data.items() %}
-<h2>{{ symbol }}</h2>
-<table>
-    <tr>
-        <th>date</th>
-        <th>Open</th>
-        <th>High</th>
-        <th>Low</th>
-        <th>Close</th>
-        <th>Volume</th>
-    </tr>
-    {% for date, open, high, low, close, volume in 
-        zip(stock_data['Data']['Date'], stock_data['Data']['Open'], stock_data['Data']['High'], 
-            stock_data['Data']['Low'], stock_data['Data']['Close'], stock_data['Data']['Volume']) %}
-    <tr>
-        <td>{{ date }}</td>
-        <td>{{ open }}</td>
-        <td>{{ high }}</td>
-        <td>{{ low }}</td>
-        <td>{{ close }}</td>
-        <td>{{ volume }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <h2>{{ symbol }}</h2>
+    <table>
+        <tr>
+            <th>date</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Volume</th>
+        </tr>
+        {% for date, open, high, low, close, volume in 
+            zip(stock_data['Data']['Date'], stock_data['Data']['Open'], stock_data['Data']['High'], 
+                stock_data['Data']['Low'], stock_data['Data']['Close'], stock_data['Data']['Volume']) %}
+        <tr>
+            <td>{{ date }}</td>
+            <td>{{ open }}</td>
+            <td>{{ high }}</td>
+            <td>{{ low }}</td>
+            <td>{{ close }}</td>
+            <td>{{ volume }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <!-- ここにキャンバス要素を追加 -->
+    <canvas id="chart-{{ symbol }}" width="400" height="400"></canvas>
 {% endfor %}
 
 <!-- add button -->
 <a href="{{ url_for('home') }}" class="back-button">Back to the first page</a>
-
+<script src="static/script.js"></script>
 </body>
 </html>
 

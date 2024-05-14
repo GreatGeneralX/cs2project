@@ -113,8 +113,32 @@ def update_portfolio():
 def home():
     return render_template('index.html')
 
+@app.route('/graph', methods=['GET', 'POST'])
+def chart_do():
+    if request.method == 'POST':
+        symbol = request.form.get('symbol', 'AAPL')
+        start_date = request.form.get('start_date', '2022-01-01')
+        end_date = request.form.get('end_date', '2022-12-31')
+        print(f"Debug: Symbol={symbol}, Start={start_date}, End={end_date}")  # デバッグ情報
 
+        stock = SingleStock(symbol, start_date, end_date)
+        data = stock.get_data()['Data']
+        print(f"Debug: Data={data}")  # データの確認
+
+        close_prices = data['Close']
+        dates = data['Date']
+        print(f"Debug: Prices={close_prices}, Dates={dates}")  # 終値と日付の確認
+
+        chart_data = {
+            'chart_labels': dates,
+            'chart_data': close_prices,
+            'chart_title': f"{symbol} Closing Prices",
+            'chart_target': f"{symbol} Stock"
+        }
+        return render_template('graph.html', c=chart_data)
+    else:
+        return render_template('graph_form.html')
 
 # This line should come after the function definition
 if __name__ == '__main__':
-    app.run(debug=False, host="0.0.0.0", port=8089)#port should be changed.
+    app.run(debug=False, host="0.0.0.0", port=8090)#port should be changed.

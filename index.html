@@ -1,11 +1,10 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <style>
         body {
-        font-family: Arial, sans-serif;
-        background-color: #fafdff; 
+            font-family: Arial, sans-serif;
+            background-color: #fafdff; 
         }
         form {
             margin: 20px;
@@ -17,57 +16,44 @@
             display: block;
             margin-top: 10px;
         }
+        .graph-form {
+            margin-top: 30px;
+            background-color: #eef;
+        }
     </style>
-  </head>
-  <!-- index.htmlに追加する部分 -->
-<form id="portfolioForm" method="POST">
-  <label>ポートフォリオ管理：</label>
-  <div>
-      <input type="checkbox" id="msft" name="stocks" value="MSFT">
-      <label for="msft">Microsoft Corporation (MSFT)</label>
-  </div>
-  <div>
-      <input type="checkbox" id="aapl" name="stocks" value="AAPL">
-      <label for="aapl">Apple (AAPL)</label>
-  </div>
-  <div>
-    <input type="checkbox" id="nvda" name="stocks" value="NVDA">
-    <label for="nvda">ANVIDIA Corporation (NVDA)</label>
-</div>
-<div>
-  <input type="checkbox" id="amzn" name="stocks" value="AMZN">
-  <label for="amzn">Amazon (AMZN)</label>
-</div>
-<div>
-  <input type="checkbox" id="google" name="stocks" value="GOOGL">
-  <label for="google">Google GOOGL)</label>
-</div>
-  <!-- 他の企業についても同様に追加 -->
-  <button type="submit">更新する</button>
-</form>
-
+</head>
 <body>
     <h1>Stock Data Input</h1>
     {% if error %}
     <div style="color: red;">{{ error }}</div>
     {% endif %}
     <form id="stockForm" method="POST">
-        <label for="symbol">Select a Company:Multiple companies can be selected with Ctrl/cmd </label>
+        <label for="symbol">Select a Company (Multiple selections possible with Ctrl/cmd):</label>
         <select id="symbol" name="symbol" required multiple>
-          <option value="MSFT">Microsoft Corporation (MSFT)</option>
-          <option value="AAPL">Apple  (AAPL)</option>
-          <option value="NVDA">NVIDIA Corporation (NVDA)</option>
-          <option value="GOOGL">Google (GOOGL)</option>
-          <option value="AMZN">Amazon (AMZN)</option>
-          <! -- add other options -->.
-      </select>
-      
+            <option value="GME">GameStop Corp. (GME)</option>
+            <option value="AAMC">AMC Entertainment Holdings, Inc.	 (AMC)</option>
+            <option value="LMND">Lemonade, Inc. (LMND)</option>
+            <option value="AAPL">Apple Inc. (GAAPL)</option>
+            <option value="AMZN">Amazon (AMZN)</option>
+            <!-- add other options -->
+        </select>
         <label for="start">Start Date:</label>
         <input type="date" id="start" name="start" required>
         <label for="end">End Date:</label>
         <input type="date" id="end" name="end" required>
         <button type="submit">Submit</button>
     </form>
+
+    <!-- 新しいグラフ生成フォーム -->
+    <form action="/graph" method="post" class="graph-form">
+        <h2>Generate Graph for Stock Data</h2>
+        <label for="symbol">Stock Symbol:</label>
+        <input type="text" id="graph-symbol" name="symbol" required>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="graph-start_date" name="start_date" required>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="graph-end_date" name="end_date" required>
+        <button type="submit">Generate Chart</button>
+    </form>
 </body>
 </html>
-
